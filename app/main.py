@@ -1,6 +1,5 @@
 import spark
 from config import config
-import json
 from flask import Flask
 from flask import request
 from flask import jsonify
@@ -10,7 +9,8 @@ app = Flask(__name__)
 @app.route("/", methods=["post"])
 def index():
     # Parse request
-    print(request.get_json(force=True))
+    webhook_req = request.get_json()
+    spark.get_message(message_id=webhook_req['data']['id'], bearer=config["bearer"])
     return jsonify({})
 
 
