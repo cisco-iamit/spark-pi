@@ -25,5 +25,24 @@ def get_message(message_id, bearer):
 
 
 # Send message
-def send_message(room_id, message, bearer):
-    pass
+def send_message(room_id, payload, bearer):
+
+    s = requests.Session()
+    s.headers.update({
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + bearer
+    })
+
+    data = {
+        "roomId": room_id
+    }
+
+    # merge message data into default data dictionary
+    data.update(payload)
+
+    r = s.post(spark_url() + "messages", json.dumps(data))
+
+    content = json.loads(r.text)
+
+    return content

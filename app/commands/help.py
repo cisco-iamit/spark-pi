@@ -1,2 +1,7 @@
 def proc(command):
-    pass
+    return {
+        "data": {
+            "text": "This is help menu."
+        },
+        "response_required": True
+    }
