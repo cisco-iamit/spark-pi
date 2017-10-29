@@ -1,3 +1,4 @@
+from importlib import import_module
 import commands
 
 
@@ -18,17 +19,12 @@ def route_command(command):
 
     root_command = command[0].lower()
 
-    if root_command == "camera":
-        return commands.camera.proc(command)
+    allowed_commands = [
+        "camera", "help", "lights", "subscribe"
+    ]
 
-    elif root_command == "help":
-        return commands.help.proc(command)
-
-    elif root_command == "lights":
-        return commands.lights.proc(command)
-
-    elif root_command == "subscribe":
-        return commands.subscribe.proc(command)
+    if root_command in allowed_commands:
+        return getattr(import_module(f"commands.{root_command}"), "proc")(command[1:])
 
     else:
-        return commands.default.proc(command)
+        return getattr(import_module("commands.default"), "proc")(command[1:])
