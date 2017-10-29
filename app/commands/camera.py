@@ -1,0 +1,2 @@
+def proc(command):
+    pass
