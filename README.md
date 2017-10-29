@@ -6,7 +6,7 @@ Cisco Spark bot to interact with elements of Raspberry Pi
 
 ## API
 
-```help``` - Manual on commands 
+* ```help``` - Get help on commands 
 
 ### Lights
 
@@ -20,13 +20,13 @@ Both commands respond with a confirmation of the operation.
 
 * ```camera photo``` - Take a photo from the camera and send it to the Spark room as an attached image.
 
-```camera video [sec]``` - Shoot a video for *sec* seconds.
+* ```camera video [sec]``` - Shoot a video for *sec* seconds.
 
 ### Subsription
 
-```subscribe security``` - Add your current Spark account to a database to receive security updates. It includes sending you photos taken by camera.
+* ```subscribe security``` - Add your current Spark account to a database to receive security updates. It includes sending you photos taken by camera.
 
-```unsubscribe security``` - Opt out from the subscription.
+* ```unsubscribe security``` - Opt out from the subscription.
 
 ## Links
 
