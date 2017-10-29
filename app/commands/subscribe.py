@@ -1,2 +1,7 @@
 def proc(command):
-    pass
+    return {
+        "data": {
+            "text": "Work in progress."
+        },
+        "response_required": True
+    }

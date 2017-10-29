@@ -1,4 +1,6 @@
 import spark
+import bot
+from bot import process_command
 from config import config
 from flask import Flask
 from flask import request
@@ -10,7 +12,13 @@ app = Flask(__name__)
 def index():
     # Parse request
     webhook_req = request.get_json()
-    spark.get_message(message_id=webhook_req['data']['id'], bearer=config["bearer"])
+    message = spark.get_message(message_id=webhook_req['data']['id'], bearer=config["bearer"])
+
+    if message["personEmail"] != config["bot_email"]:
+        res = process_command(message["text"])
+        if res["response_required"]:
+            spark.send_message(message["roomId"], res["data"], config["bearer"])
+
     return jsonify({})
 
 
