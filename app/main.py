@@ -6,16 +6,11 @@ from flask import request
 from flask import jsonify
 app = Flask(__name__)
 
-print(config["bearer"])
-
 
 @app.route("/", methods=["post"])
 def index():
     # Parse request
     print(request.get_json(force=True))
-
-
-
     return jsonify({})
 
 

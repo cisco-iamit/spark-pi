@@ -1,17 +1,13 @@
 import requests
 
 
+# Return Spark API base URL
 def spark_url():
     return "https://api.ciscospark.com/v1/"
 
 
+# Get message by ID
 def get_message(message_id, config):
-    """
-    This method is used for:
-        -retrieving message text, when the webhook is triggered with a message
-        -Getting the username of the person who posted the message if a command is recognized
-    """
-    url = f"https://api.ciscospark.com/v1/messages/"
 
     s = requests.Session()
     s.headers.update({
