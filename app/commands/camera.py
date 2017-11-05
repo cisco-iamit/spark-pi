@@ -1,3 +1,10 @@
+import picamera
+import time
+
+
+camera = picamera.PiCamera()
+
+
 def proc(command):
     return {
         "data": {
@@ -8,8 +15,11 @@ def proc(command):
 
 
 def take_photo():
-    pass
+    session_id = ""
+    camera.capture('../tmp/photo-' + session_id + '.jpg')
 
 
-def shoot_video():
-    pass
+def shoot_video(video_length):
+    camera.start_recording('video.h264')
+    time.sleep(video_length)
+    camera.stop_recording()
