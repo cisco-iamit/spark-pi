@@ -8,6 +8,9 @@ from flask import jsonify
 app = Flask(__name__)
 
 
+print(bot.process_command("camera photo"))
+
+
 @app.route("/", methods=["post"])
 def index():
     # Parse request
