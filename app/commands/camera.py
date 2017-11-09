@@ -22,13 +22,16 @@ def proc(command):
 
 def take_photo():
     session_id = str(time.time())
-    file_name = 'app/tmp/' + session_id + '.jpg'
-    camera.capture(file_name)
+    file_name = session_id + '.jpg'
+    file_path = 'app/tmp/'
+    full_path = file_path + file_name
+    camera.capture(full_path)
+    
     return {
         "data": {
             "status": "ok",
             "text": "Photo has been successfully taken",
-            "files": [file_name]
+            "files": (file_name, open(full_path, 'rb'), 'image/jpeg')
         },
         "response_required": True
     }

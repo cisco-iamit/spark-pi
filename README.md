@@ -32,8 +32,9 @@ We use:
 1. Sign up on [developer.ciscospark.com](https://developer.ciscospark.com) and [create a bot](https://developer.ciscospark.com/add-bot.html).
 2. Sign up on [ngrok.com](https://ngrok.com) and follow guidelines to run the tunnel to port 8080.
 3. [Create a webhook](https://developer.ciscospark.com/endpoint-webhooks-post.html) for your Spark bot. This will ensure that messages sent to your bot will be forwarded via ngrok to your localhost script. Make sure to enable test mode on and enter your bot information on the webpage.
-4. Run ```python3 app/main.py```.
-5. You can now use your bot.
+4. Install requirements: ```pip3 install -r requirements.txt --user```.
+5. Run ```python3 app/main.py```.
+6. You can now use your bot.
 
 ## Bot API
 
