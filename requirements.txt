@@ -3,3 +3,5 @@ requests==2.18.4
 requests-toolbelt==0.8.0
 pymongo==3.5.1
 picamera==1.13
+RPi.GPIO==0.6.3
+
