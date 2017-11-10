@@ -1,6 +1,7 @@
-def proc(command):
+def proc(command, message):
     return {
         "data": {
+            "status": "ok",
             "text": "Work in progress."
         },
         "response_required": True
