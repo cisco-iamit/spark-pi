@@ -40,8 +40,6 @@ def index():
 
 if __name__ == "__main__":
     motion_thread = Thread(target = run_motion_detection)
-    flask_thread = Thread(target = run_flask_server)
     motion_thread.daemon = True
-    flask_thread.daemon = True
     motion_thread.start()
-    flask_thread.start()
+    app.run(host='0.0.0.0', port=8080)
