@@ -24,8 +24,6 @@ We use:
 * Raspberry Pi 2b or 3b
 * Official Raspberry Pi camera
 * Motion sensor ([we use this](https://www.amazon.co.uk/gp/product/B00NFXBPU8/))
-* LED Matrix ([we use this](https://www.amazon.co.uk/gp/product/B0714FVF3R/))
-* Keypad ([we use this](https://www.amazon.co.uk/gp/product/B00UB32C7U/))
 
 ## Run Bot
 
@@ -58,8 +56,6 @@ Both commands respond with a confirmation of the operation.
 ### Camera
 
 * ```camera photo``` - Take a photo with a Raspberry Pi  camera and send it back as an attached image.
-
-* ```camera video [sec]``` - Shoot a video for *sec* seconds and send it back as an attached file.
 
 ### Subsription
 
