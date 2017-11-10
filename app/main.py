@@ -7,6 +7,8 @@ from flask import request
 from flask import jsonify
 app = Flask(__name__)
 
+#print(bot.process_command("camera photo"))
+
 
 @app.route("/", methods=["post"])
 def index():
@@ -15,7 +17,7 @@ def index():
     message = spark.get_message(message_id=webhook_req['data']['id'], bearer=config["bearer"])
 
     if message["personEmail"] != config["bot_email"]:
-        res = process_command(message["text"])
+        res = process_command(message["command"])
         if res["response_required"]:
             spark.send_message(message["roomId"], res["data"], config["bearer"])
 
