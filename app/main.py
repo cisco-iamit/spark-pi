@@ -16,7 +16,6 @@ def on_motion_detected():
 
 
 def run_motion_detection():
-    print("hello")
     motion.detector_on(on_motion_detected)
    
     
@@ -31,7 +30,7 @@ def index():
     message = spark.get_message(message_id=webhook_req['data']['id'], bearer=config["bearer"])
 
     if message["personEmail"] != config["bot_email"]:
-        res = process_command(message["command"])
+        res = process_command(message["command"], message)
         if res["response_required"]:
             spark.send_message(message["roomId"], res["data"], config["bearer"])
 

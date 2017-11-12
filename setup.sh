@@ -2,6 +2,6 @@
 sudo apt-get update
 sudo rpi-update
 sudo raspi-config update
-sudo apt-get install gpac
+sudo apt-get install -y gpac git mongodb
 pip3 install -r requirements.txt --user
-reboot
+cd app && mkdir tmp

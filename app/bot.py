@@ -3,9 +3,9 @@ import commands
 
 
 # Entry point for raw input
-def process_command(raw_data):
+def process_command(raw_data, message):
     command = parse_command(raw_data)
-    response = route_command(command)
+    response = route_command(command, message)
     return response
 
 
@@ -15,16 +15,16 @@ def parse_command(string):
 
 
 # Route a command to a respective handler
-def route_command(command):
+def route_command(command, message):
 
     root_command = command[0].lower()
 
     allowed_commands = [
-        "camera", "help", "lights", "subscribe"
+        "camera", "help", "lights", "event"
     ]
 
     if root_command in allowed_commands:
-        return getattr(import_module(f"commands.{root_command}"), "proc")(command[1:])
+        return getattr(import_module(f"commands.{root_command}"), "proc")(command[1:], message)
 
     else:
-        return getattr(import_module("commands.default"), "proc")(command[1:])
+        return getattr(import_module("commands.default"), "proc")(command[1:], message)

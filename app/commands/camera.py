@@ -5,7 +5,7 @@ import time
 camera = picamera.PiCamera()
 
 
-def proc(command):
+def proc(command, message):
     if command[0] == "photo":
         return take_photo()
     elif command[0] == "video":
