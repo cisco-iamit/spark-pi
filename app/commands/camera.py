@@ -1,15 +1,12 @@
 import picamera
 import time
 
-
 camera = picamera.PiCamera()
 
 
 def proc(command, message):
     if command[0] == "photo":
         return take_photo()
-    elif command[0] == "video":
-        return shoot_video()
     else:
         return {
             "data": {
@@ -35,14 +32,3 @@ def take_photo():
         },
         "response_required": True
     }
-
-
-def shoot_video(video_length):
-    session_id = str(time.time())
-    file_name_h264 = 'app/tmp/' + session_id + '.h264'
-    file_name_mp4 = 'app/tmp/' + session_id + '.mp4'
-    camera.start_recording(file_name_h264)
-    camera.wait_recording(video_length)
-    camera.stop_recording()
-    # sudo apt-get install gpac
-    # MP4Box -add filename.h264 filename.mp4

@@ -1,5 +1,7 @@
 import spark
 import motion
+import commands.camera as camera
+import commands.event as event
 from bot import process_command
 from config import config
 from flask import Flask
@@ -12,16 +14,16 @@ app = Flask(__name__)
 
 
 def on_motion_detected():
-    print("motion detected!")
+    room_data = event.get_subscribers("security")
+    if len(room_data):
+        photo_data = camera.take_photo()
+        for room in room_data:
+            spark.send_message(room["room_id"], photo_data["data"], config["bearer"])
 
 
 def run_motion_detection():
     motion.detector_on(on_motion_detected)
    
-    
-def run_flask_server():
-    app.run(host='0.0.0.0', port=8181)
-
 
 @app.route("/", methods=["post"])
 def index():

@@ -8,7 +8,6 @@ def proc(command, message):
                 
                 &#128247; camera controls<br>
                 <b>camera photo</b>: I will take a photo and send it back<br>
-                <b>camera video <i>sec</i></b>: I will shoot a <i>sec</i>-second long video (up to 10 seconds)<br><br>
                 
                 &#128161; light controls<br>
                 <b>lights on <i>color</i></b>: I will shine with the specified <i>color</i> (red, green, blue)<br>
