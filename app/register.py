@@ -1,6 +1,6 @@
 import requests
 import json
-import config
+from config import config
 
 target_url = ""
 
