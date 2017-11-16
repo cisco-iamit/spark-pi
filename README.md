@@ -2,6 +2,10 @@
 
 Cisco Spark bot to interact with components of Raspberry Pi.
 
+**Warning:** this code will be cleaned, refactored and commented over this week (until November 20), and more detailed documentation will be added.
+
+Please, be patient as I do my main job first :)
+
 ## How It Works
 
 Check out our video on YouTube.
