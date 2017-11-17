@@ -1,11 +1,12 @@
 import RPi.GPIO as GPIO
 import time
+from config import config
 
-GPIO_MOTION_SENSOR = 23
-DETECTION_TIMEOUT = 5  # number of seconds for 
+detection_timeout = 5  # number of seconds for
+sensor_poll_timeout = 0.1
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(GPIO_MOTION_SENSOR, GPIO.IN) #PIR
+GPIO.setup(config.gpio_motion_sensor, GPIO.IN) #PIR
 
 detector_enabled = True
 
@@ -15,10 +16,10 @@ def detector_on(cbk_fn, *args):
     try:
         time.sleep(2) # to stabilize sensor
         while detector_enabled:
-            if GPIO.input(GPIO_MOTION_SENSOR):
+            if GPIO.input(config.gpio_motion_sensor):
                 cbk_fn(*args)
-                time.sleep(DETECTION_TIMEOUT) #to avoid multiple detection
-            time.sleep(0.1) #loop delay, should be less than detection delay
+                time.sleep(detection_timeout) #to avoid multiple detection
+            time.sleep(sensor_poll_timeout) #loop delay, should be less than detection delay
 
     except:
         GPIO.cleanup()

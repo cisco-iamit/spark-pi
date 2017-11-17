@@ -8,5 +8,5 @@ cd Python-3.6.2/
 ./configure
 make
 sudo make install
-cd ~/Desktop/spark-pi/ && pip3 install -r requirements.txt --user
-cd app && mkdir tmp
+rm -rf Python-3.6.2/ Python-3.6.2.tgz
+pip3 install -r requirements.txt --user
