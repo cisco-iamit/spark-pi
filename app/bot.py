@@ -1,5 +1,4 @@
 from importlib import import_module
-import commands
 
 
 # Entry point for raw input

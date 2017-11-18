@@ -8,8 +8,6 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from threading import Thread
-import time
-import sys
 app = Flask(__name__)
 
 
