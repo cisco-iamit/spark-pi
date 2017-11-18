@@ -20,11 +20,11 @@ We use:
 * Official Raspberry Pi camera
 * Motion sensor
 
-The motion sensor is connected to the [GPIO port 23](https://pinout.xyz/pinout/pin16_gpio23) in our example, however you are free to choose any other port. Make sure to change ```app/config``` file accordingly.
+The motion sensor is connected to the [GPIO port 23](https://pinout.xyz/pinout/pin16_gpio23) in our example, however you are free to choose any other port. Make sure to change ```app/config.py``` file accordingly.
 
 #### Precautions
 
-Make sure to remove static electricity, when playing with the Pi Camera and motion sensors, as they might be damaged.
+Make sure to remove static electricity when playing with the Pi Camera and motion sensors, as they might be damaged, for example, you can touch grounded metal surface.
 
 Plug the camera in and out when the Pi board is not powered only, as doing otherwise could damage it.
 
@@ -42,26 +42,26 @@ You can install the dependencies manually or run an automated script to get this
 
 ### External Services
 
-1. Sign up on [developer.ciscospark.com](https://developer.ciscospark.com) and [create a bot](https://developer.ciscospark.com/add-bot.html). Save the authorisation token into ```app/config.py``` (as bearer)
+1. Sign up on [developer.ciscospark.com](https://developer.ciscospark.com) and [create a bot](https://developer.ciscospark.com/add-bot.html). Save the authorisation token and the bot username (e.g. bot@sparkbot.io) into ```app/config.py```
 2. Sign up on [ngrok.com](https://ngrok.com) and follow guidelines to run the tunnel to port 8080.
-3. Create a webhook.This will ensure that messages sent to your bot will be forwarded via ngrok to your localhost script. Make sure to enable test mode on and enter your bot information on the webpage.
-  * Option 1. [Create a webhook](https://developer.ciscospark.com/endpoint-webhooks-post.html) for your Spark bot online.
-  * Option 2. Just insert the authorisation token into ```app/config.py``` and the ngrok URL into ```target_url``` in ```app/register.py```. Then run it: ```python3.6 app/register.py```. If you see "OK", everything is good.
+3. Create a webhook.This will ensure that messages sent to your bot will be forwarded via ngrok to your localhost script. 
+  * Option 1. [Create a webhook](https://developer.ciscospark.com/endpoint-webhooks-post.html) for your Spark bot online. Make sure to enable test mode on and enter your bot information on the webpage.
+  * Option 2. If you already saved the authorisation token (bearer) into ```app/config.py```, then write the ngrok URL into ```target_url``` in ```app/register.py```. Then run it: ```python3.6 app/register.py```. If you see "OK", everything is good and the bot has been registered.
 
 ## Run Bot
 
 1. Run ```./ngrok http 8080``` to create a tunnel
 2. Run ```python3.6 app/main.py``` to launch the bot
 
-Note: every time you run ngrok with a free plan, it changes the URL, which means that you need to reregister the bot. The easiest way is to simply insert the new URL into ```app/register.py``` and run it.
+**Note:** every time you run ngrok on a free plan, it changes the URL, which means that you need to re-register the bot. The easiest way is to simply insert the new URL into ```app/register.py``` and run it.
 
-Now, you can access Cisco Spark on [web.ciscospark.com](https://web.ciscospark.com) or download the app to your device.
+Now, you can access Cisco Spark on [web.ciscospark.com](https://web.ciscospark.com) or download the app to your device. Add your bot to the contact list and start sending commands.
 
 ## Bot API
 
 Bot responds to the commands stated below. Commands are case insensitive, which means that ```COMMAND```, ```command``` and ```CoMmanD``` are all the same thing. 
 
-You can add a bot to a Spark space, or start an 1:1 chat - all cases are covered.
+You can add a bot to a Spark space, or start a 1:1 chat - all cases are covered.
 
 ### Command Help
 
@@ -71,17 +71,16 @@ You can add a bot to a Spark space, or start an 1:1 chat - all cases are covered
 
 * ```camera photo``` - Take a photo with a Raspberry Pi  camera and send it back as an attached image.
 
-### Subsription
+### Event Subscription
 
-* ```subscribe security``` - Add your current Spark account to a database to receive security updates. It includes sending you photos taken by camera, when the motion sensor fires up.
+* ```event subscribe security``` - When the motion sensor detects the motion, it notifies the bot about it. If you're subscribed to this event, you'll receive a notification.
 
-* ```unsubscribe security``` - Opt out from the subscription.
+* ```event unsubscribe security``` - Opt out from the subscription.
 
 
 #### Example
 
 ![](readme/camera-photo.png)
-
 
 ## File Structure
 
