@@ -42,15 +42,20 @@ You can install the dependencies manually or run an automated script to get this
 
 ### External Services
 
-1. Sign up on [developer.ciscospark.com](https://developer.ciscospark.com) and [create a bot](https://developer.ciscospark.com/add-bot.html).
+1. Sign up on [developer.ciscospark.com](https://developer.ciscospark.com) and [create a bot](https://developer.ciscospark.com/add-bot.html). Save the authorisation token into ```app/config.py``` (as bearer)
 2. Sign up on [ngrok.com](https://ngrok.com) and follow guidelines to run the tunnel to port 8080.
-3. [Create a webhook](https://developer.ciscospark.com/endpoint-webhooks-post.html) for your Spark bot. This will ensure that messages sent to your bot will be forwarded via ngrok to your localhost script. Make sure to enable test mode on and enter your bot information on the webpage.
+3. Create a webhook.This will ensure that messages sent to your bot will be forwarded via ngrok to your localhost script. Make sure to enable test mode on and enter your bot information on the webpage.
+  * Option 1. [Create a webhook](https://developer.ciscospark.com/endpoint-webhooks-post.html) for your Spark bot online.
+  * Option 2. Just insert the authorisation token into ```app/config.py``` and the ngrok URL into ```target_url``` in ```app/register.py```. Then run it: ```python3.6 app/register.py```. If you see "OK", everything is good.
 
 ## Run Bot
 
-1. Run ```./ngrok http 8080```
-2. Run ```python.63 app/main.py```
-3. You can now use your bot.
+1. Run ```./ngrok http 8080``` to create a tunnel
+2. Run ```python3.6 app/main.py``` to launch the bot
+
+Note: every time you run ngrok with a free plan, it changes the URL, which means that you need to reregister the bot. The easiest way is to simply insert the new URL into ```app/register.py``` and run it.
+
+Now, you can access Cisco Spark on [web.ciscospark.com](https://web.ciscospark.com) or download the app to your device.
 
 ## Bot API
 
@@ -71,6 +76,37 @@ You can add a bot to a Spark space, or start an 1:1 chat - all cases are covered
 * ```subscribe security``` - Add your current Spark account to a database to receive security updates. It includes sending you photos taken by camera, when the motion sensor fires up.
 
 * ```unsubscribe security``` - Opt out from the subscription.
+
+
+#### Example
+
+![](readme/camera-photo.png)
+
+
+## File Structure
+
+```
+├── LICENSE              - License file
+├── README.md            - Documentation
+├── app                  - All Python code here
+│   ├── bot.py           - 
+│   ├── commands         - Each individual command is implemented as a module
+│   │   ├── camera.py
+│   │   ├── default.py   - Default reply if command is not found
+│   │   ├── event.py
+│   │   └── help.py
+│   ├── config.py        - Bot configuration
+│   ├── main.py          - Entry point, all operations start here
+│   ├── motion.py        - A module for motion detector
+│   ├── register.py      - Automatic registration of a webhook
+│   ├── spark.py         - Implementation of Spark API
+│   └── tmp              - Photos will be saved into this folder
+├── ngrok                - The binary ngrok to let you work out of box
+├── readme               - Materials for this README that do not affect the app
+│   └── camera-photo.png
+├── requirements.txt     - Python3 dependencies (list of packages)
+└── setup.sh             - Automatic environment setup script
+```
 
 ## References
 
