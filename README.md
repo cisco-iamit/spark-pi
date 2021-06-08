@@ -1,8 +1,10 @@
-# Cisco Spark + Raspberry Pi
+# Cisco Spark + Raspberry Pi (no longer maintained)
 
 [Cisco Spark](https://www.ciscospark.com) bot to interact with components of [Raspberry Pi](https://www.raspberrypi.org).
 
 Currently, the bot accepts commands to take a photo with a Raspberry Pi camera on a user's demand, as well as subscribe to automatic photo shooting on detected motion.
+
+**Please note:** this code was created for a programming class in 2017 and is no longer maintained.
 
 ## Why
 
